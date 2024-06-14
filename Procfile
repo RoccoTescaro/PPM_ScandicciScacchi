@@ -1,1 +1,1 @@
-web: python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn events_webapp.wsgi --log-file - --bind
+web: python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn events_webapp.wsgi --log-file -
