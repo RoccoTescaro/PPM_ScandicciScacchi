@@ -8,10 +8,10 @@
 
 {% block content %}
 
-    <h1> {{user.first_name}} {{user.last_name}}</h1>
+    <h1> {{checked_user.first_name}} {{checked_user.last_name}}</h1>
 
-    {% if user.email %}
-       <strong>Web:</strong> <a href="{{ user.email }}">{{ user.email }}</a> </br>
+    {% if checked_user.email %}
+       <strong>Web:</strong> <a href="{{ checked_user.email }}">{{ checked_user.email }}</a> </br>
     {% endif %}
 
     </br>

@@ -235,18 +235,18 @@ def searchVenueView(request):
         return render(request, 'home.html', { })
     
 def userView(request, user_id):
-    user = User.objects.get(pk=user_id)
+    checked_user = User.objects.get(pk=user_id)
     #eventi a cui partecipa l'utente
-    attended_events = models.Event.objects.filter(attendees=user)
+    attended_events = models.Event.objects.filter(attendees=checked_user)
     attended_events = attended_events.order_by('date')
 
-    managed_events = models.Event.objects.filter(manager=user)
+    managed_events = models.Event.objects.filter(manager=checked_user)
     managed_events = managed_events.order_by('date')
 
     return render(request,
                   'user.html',
                   {
-                      'user': user,
+                      'checked_user': checked_user,
                       'attended_events': attended_events,
                       'managed_events': managed_events,
                   })
