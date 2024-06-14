@@ -11,7 +11,7 @@
 
     <h1>Aggiorna Evento</h1>
 
-    {% if user.is_authenticated and user.is_staff and user == event.manager %}
+    {% if user.is_authenticated and user == event.manager %}
 
     <form action="" method=POST class="container d-flex flex-column w-75 mt-4">
         {% csrf_token %}
