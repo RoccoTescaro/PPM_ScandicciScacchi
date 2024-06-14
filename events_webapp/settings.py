@@ -36,11 +36,11 @@ else:
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "djangorailway-production.up.railway.app",
+    "ppmscandicciscacchi-production.up.railway.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "djangorailway-production.up.railway.app",
+    "ppmscandicciscacchi-production.up.railway.app",
 ]
 
 
