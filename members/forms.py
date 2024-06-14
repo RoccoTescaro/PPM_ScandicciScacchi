@@ -16,7 +16,7 @@ class SigninForm(UserCreationForm):
     username = forms.CharField(max_length=23, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
     first_name = forms.CharField(max_length=23, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome'}))
     last_name = forms.CharField(max_length=23, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Cognome'}))
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
+    email = forms.EmailField(required=False, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
 
     class Meta:
         model = User
