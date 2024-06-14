@@ -6,7 +6,7 @@ L'applicazione è stata sviluppata con Django e Python.
 La pagina principale mostra semplicemente un messaggio di benvenuto per l'utente e una barra di ricerca di eventi. Tramite barra di ricerca o barra di navigazione è possibile spostarsi nella pagina che elenca gli eventi. \
 Sempre nella barra di navigazione è possibile effettuare il login o la registrazione (se loggati saranno invece riportati nome utente e pulsante di logout).
 Quando si è loggati è possibile iscriversi ad un evento, abbandonarlo o in caso manager dell'evento, modificarlo o eliminarlo. \
-In caso l'utente sia parte dello staff può anche creare un evento con il bottone apposito (vicino alla barra di ricerca, non visibile per i non staff). 
+In caso l'utente sia parte dello staff può anche creare un evento con il bottone apposito (vicino alla barra di ricerca, non visibile per i non staff). \
 ![](images/addevent_button.png)
  
  Se loggati il link degli eventi presente nella barra di navigazione permette un filtraggio degli eventi per: tutti gli eventi, eventi gestiti dall'utente, eventi a cui l'utente è iscritto (la barra di ricerca filtra su tutti gli eventi sempre e comunque, quindi volendo è possibile ricaricare tutti gli eventi cercando una stringa vuota). Tramite il link del nome dell'evento è possibile accedere alla pagina che mostra i dettagli relativi all'evento stesso.
