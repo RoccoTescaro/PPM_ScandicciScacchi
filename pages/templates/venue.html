@@ -16,8 +16,12 @@
         <strong>Phone:</strong> {{ venue.phone }} </br>
     {% endif %}
 
+    {% if venue.web %}
+       <strong>Web:</strong> <a href="{{ venue.web }}">{{ venue.email }}</a> </br>
+    {% endif %}
+
     {% if venue.email %}
-       <strong>Web:</strong> <a href="{{ venue.email }}">{{ venue.email }}</a> </br>
+        <strong>Email:</strong> <a href="mailto:{{ venue.email }}">{{ venue.email }}</a> </br>
     {% endif %}
 
     </br>
