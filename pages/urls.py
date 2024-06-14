@@ -46,4 +46,6 @@ urlpatterns = [
     path('delete_venue/<int:venue_id>', views.deleteVenueView, name='delete_venue'),
     # search venue
     path('search_venue', views.searchVenueView, name='search_venue'),
+    # user detail page
+    path('user/<int:user_id>', views.userView, name='user'),
 ]

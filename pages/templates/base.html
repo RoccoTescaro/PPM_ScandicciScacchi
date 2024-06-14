@@ -80,7 +80,7 @@
 
     </head>
 
-    <body class="bg-light py-5">
+    <body class="bg-light py-5 overflow-hidden">
 
        {% include 'navbar.html' %}
 
@@ -102,7 +102,7 @@
         {% endif %}
 
 
-        <div class="shadow rounded container bg-body my-5 py-5 overflow-scroll" style="height: 82vh;">
+        <div class="shadow rounded container bg-body my-5 py-5 overflow-y-scroll" style="height: 82vh;">
 
             {% block content %}
 

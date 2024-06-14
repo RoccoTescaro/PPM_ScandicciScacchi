@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from . import models
 from . import forms
+from django.contrib.auth.models import User
 
 def homeView(request):
     return render(request, 'home.html', { })
@@ -10,6 +11,7 @@ def homeView(request):
 
 def eventsView(request):
     events = models.Event.objects.all()
+    events = events.order_by('date')
 
     return render(request, 
                   'events.html',
@@ -19,6 +21,7 @@ def eventsView(request):
 
 def managedEventsView(request):
     events = models.Event.objects.filter(manager=request.user)
+    events = events.order_by('date')
 
     return render(request,
                   'events.html',
@@ -28,6 +31,7 @@ def managedEventsView(request):
 
 def attendedEventsView(request):
     events = models.Event.objects.filter(attendees=request.user)
+    events = events.order_by('date')
 
     return render(request,
                   'events.html',
@@ -48,7 +52,7 @@ def addEventView(request):
     submitted = False
 
     if request.method == 'POST':
-        form = forms.EventForm(request.POST)
+        form = forms.EventForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, 'Event added successfully')
@@ -134,6 +138,8 @@ def searchEventView(request):
     if request.method == 'POST':
         searched_event = request.POST['searched_event']
         events = models.Event.objects.filter(name__contains=searched_event)
+        events = events.order_by('date')
+
         return render(request,
                     'events.html',
                     {
@@ -155,11 +161,15 @@ def venuesView(request):
 
 def venueView(request, venue_id):
     venue = models.Venue.objects.get(pk=venue_id)
+    events = models.Event.objects.filter(venue=venue)
+
+    events = events.order_by('date')
 
     return render(request,
                   'venue.html',
                   {
                       'venue': venue,
+                      'events': events,
                   })
 
 def addVenueView(request):
@@ -223,3 +233,20 @@ def searchVenueView(request):
                     })
     else:
         return render(request, 'home.html', { })
+    
+def userView(request, user_id):
+    user = User.objects.get(pk=user_id)
+    #eventi a cui partecipa l'utente
+    attended_events = models.Event.objects.filter(attendees=user)
+    attended_events = attended_events.order_by('date')
+
+    managed_events = models.Event.objects.filter(manager=user)
+    managed_events = managed_events.order_by('date')
+
+    return render(request,
+                  'user.html',
+                  {
+                      'user': user,
+                      'attended_events': attended_events,
+                      'managed_events': managed_events,
+                  })

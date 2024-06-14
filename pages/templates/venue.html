@@ -11,10 +11,28 @@
     <h1> {{venue.name}} </h1>
 
     {{ venue.address }} </br>
-    {{ venue.zip_code }} </br>
-    {{ venue.phone }} </br>
-    {{ venue.email }} </br>
-    <a href="{{ venue.web }}"> {{ venue.web }} </a></br>
+
+    {% if venue.phone %}
+        <strong>Phone:</strong> {{ venue.phone }} </br>
+    {% endif %}
+
+    {% if venue.email %}
+       <strong>Web:</strong> <a href="{{ venue.email }}">{{ venue.email }}</a> </br>
+    {% endif %}
+
+    </br>
+    
+
+    {% if events %}
+        <strong>Eventi in questo luogo:</strong> </br>
+    
+        {% for event in events %}
+            <div class="border border-secondary rounded p-3 mb-3">
+                <strong><a href="{% url 'event' event.id %}"> {{ event.name }} </a> </strong> </br>
+                <strong>Data:</strong> {{ event.date }}        
+            </div>
+        {% endfor %}
+    {% endif %} 
 
 {% endblock %}
 

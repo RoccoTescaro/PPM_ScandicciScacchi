@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+    
+    {{user.username}}
+
+{% endblock %}
+
+{% block content %}
+
+    <h1> {{user.first_name}} {{user.last_name}}</h1>
+
+    {% if user.email %}
+       <strong>Web:</strong> <a href="{{ user.email }}">{{ user.email }}</a> </br>
+    {% endif %}
+
+    </br>
+    
+    {% if attended_events %}
+        <strong>Eventi a cui partecipa:</strong> </br>
+        {% for event in attended_events %}
+            <div class="border border-secondary rounded p-3 mb-3">
+                <strong><a href="{% url 'event' event.id %}"> {{ event.name }} </a> </strong> </br>
+                <strong>Data:</strong> {{ event.date }}        
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if managed_events %}
+        <strong>Eventi gestiti:</strong> </br>
+        {% for event in managed_events %}
+            <div class="border border-secondary rounded p-3 mb-3">
+                <strong><a href="{% url 'event' event.id %}"> {{ event.name }} </a> </strong> </br>
+                <strong>Data:</strong> {{ event.date }}        
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
+
+<!-- use \{\{ <variable> | safe \}\} (without escape slash)--> 

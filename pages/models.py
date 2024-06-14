@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 class Venue(models.Model):
     name = models.CharField(max_length=127)
     address = models.CharField(max_length=255)
-    zip_code = models.CharField(max_length=15)
     phone = models.CharField(max_length=12, blank=True)
     web = models.URLField(blank=True)
     email = models.EmailField(blank=True)
@@ -19,6 +18,7 @@ class Event(models.Model):
     manager = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
     description = models.TextField(blank=True)
     attendees = models.ManyToManyField(User, related_name='attendees', blank=True)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
         return self.name

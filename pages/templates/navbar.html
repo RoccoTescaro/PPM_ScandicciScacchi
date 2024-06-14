@@ -10,9 +10,9 @@
                 <li class="nav-item me-3">
                     <a class="nav-link" href="{% url 'home' %}"> Home </a>
                 </li>
-                <!--<li class="nav-item me-3">
-                    <a class="nav-link" href="{% url 'events' %}"> Eventi </a>
-                </li>-->
+
+                {% if user.is_authenticated %}
+
                 <li class="nav-item dropdown me-3">
                     <a class="nav-link dropdown-toggle" style="color:rgba(255, 255, 255, 0.55);" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Eventi
@@ -20,22 +20,19 @@
                     <ul class="dropdown-menu bg-dark position-absolute">
                         <li><a class="dropdown-item" href="{% url 'events' %}">Tutti gli Eventi</a></li>
 
-                        {% if user.is_authenticated and user.is_staff %}
                             <li><a class="dropdown-item" href="{% url 'managed_events' %}">Eventi Gestiti</a></li>
-                        {% endif %}
-                        
-                        <li><a class="dropdown-item" href="{% url 'attended_events' %}">Eventi a cui partecipo</a></li>
-                    </ul>
+                            
+                            <li><a class="dropdown-item" href="{% url 'attended_events' %}">Eventi a cui partecipo</a></li>
+                        </ul>
                 </li>
-                <!--<li class="nav-item me-3">
-                    <a class="nav-link" href="{% url 'add_event' %}"> Nuovo Evento </a>
-                </li>-->
+                {% else %}
+                <li class="nav-item me-3">
+                    <a class="nav-link" href="{% url 'events' %}"> Eventi </a>
+                </li>
+                {% endif %}
                 <li class="nav-item me-3">
                     <a class="nav-link" href="{% url 'venues' %}"> Luoghi </a>
                 </li>
-                <!--<li class="nav-item me-3">
-                    <a class="nav-link" href="{% url 'add_venue' %}"> Nuovo Luogo </a>
-                </li>-->
             </ul>
 
             <div class="ms-auto me-3">

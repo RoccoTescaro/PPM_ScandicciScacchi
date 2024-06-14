@@ -10,9 +10,22 @@
 
     <h1> {{event.name}} </h1>
 
-    {{ event.address }} </br>
-    {{ event.manager }} </br>
+    <strong><a href="{% url 'venue' event.venue.id %}"> {{ event.venue }} </a> </strong> </br>
+    <strong>Data:</strong> {{ event.date }} </br>
 
+    <strong>Manager:</strong> <a class="text-uppercase" href="{% url 'user' event.manager.id %}"> {{ event.manager.first_name }} {{ event.manager.last_name }} </a></br></br>
+
+    {{ event.description }} </br></br>
+
+    {% if event.attendees.all %}
+        <strong>Partecipanti:</strong> </br>
+        {% for attende in event.attendees.all %}
+            <a href="{% url 'user' attende.id %}"> {{ attende.first_name }} {{ attende.last_name }} </a></br>
+        {% endfor %}
+
+    {% else %}
+        <strong>Non ci sono partecipanti</strong>
+    {% endif %}
 {% endblock %}
 
 <!-- use \{\{ <variable> | safe \}\} (without escape slash)--> 

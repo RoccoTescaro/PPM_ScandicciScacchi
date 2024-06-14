@@ -4,19 +4,23 @@ from django.contrib import messages
 from . import forms
 
 def loginUser(request):
+    form = forms.LoginForm()
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
-            login(request, user)
-            messages.success(request, f'Welcome back, {username}!')
-            return render(request, 'home.html', { })
+        form = forms.LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'You have been logged in.')
+                return redirect('home')
+            else:
+                messages.error(request, 'Invalid username or password.')
         else:
             messages.error(request, 'Invalid username or password.')
-    
-    return render(request, 'login.html', {})
+            
+    return render(request, 'login.html', {'form': form})
 
 def logoutUser(request):
     logout(request)
@@ -29,9 +33,7 @@ def signinUser(request):
         form = forms.SigninForm(request.POST)
         if form.is_valid():
             form.save()
-            first_name = form.cleaned_data.get('first_name')
-            last_name = form.cleaned_data.get('last_name')
-            username = first_name + last_name
+            username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             #password2 = form.cleaned_data.get('password2')
             user = authenticate(request, username=username, password=password)

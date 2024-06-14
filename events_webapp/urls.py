@@ -1,5 +1,5 @@
 """
-URL configuration for temp_project project.
+URL configuration for events_webapp project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -16,13 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_title = "Scandicci Scacchi Gestore Eventi Admin Portal"
 admin.site.site_header = "Scandicci Scacchi Gestore Eventi Admin"
