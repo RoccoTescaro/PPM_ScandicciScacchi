@@ -40,7 +40,7 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "ppmscandicciscacchi-production.up.railway.app",
+    "https://ppmscandicciscacchi-production.up.railway.app",
 ]
 
 
