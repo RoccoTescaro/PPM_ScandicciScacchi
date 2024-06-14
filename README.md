@@ -1,7 +1,7 @@
 # PPM_ScandicciScacchi
 Sviluppo backend di una pagina per la gestione di eventi.
 L'applicazione corrente permette di gestire eventi di scacchi con la possibilità di iscriversi ad essi, visualizzare i partecipanti e i luoghi in cui si svolgeranno.
-L'applicazione è stata sviluppata con Django e Python.
+L'applicazione è stata sviluppata con __Django__ e __Python__.
 
 La pagina principale mostra semplicemente un messaggio di benvenuto per l'utente e una barra di ricerca di eventi. Tramite barra di ricerca o barra di navigazione è possibile spostarsi nella pagina che elenca gli eventi. \
 Sempre nella barra di navigazione è possibile effettuare il login o la registrazione (se loggati saranno invece riportati nome utente e pulsante di logout).
@@ -22,7 +22,9 @@ __Credenziali di accesso__:
 | manager _(utente che gestisce eventi ma non può crearne)_ |_RobertoCaporali_|_ppmbe2024_|
 | membro staff |_RoccoTescaro_|_ppmbe2024_|
 
-Come si può notare, non solo i membri dello staff possono gestire eventi, infatti creando un nuovo evento posso decidere di delegare la gestione ad un altro utente (che diventerà manager dell'evento). Questo è possibile farlo tramite il campo "manager" presente nella creazione di un evento (a cui si accede con il bottone apposito indicato precedentemente accanto alla barra di ricerca). Solo il manager dell'evento può però modificare o eliminare l'evento, pertanto un membro dello staff che decide di delegare la gestione dell'evento ad un altro utente non potrà più modificarlo o eliminarlo se non accedendo direttamente al database.
+Come si può notare, non solo i membri dello staff possono gestire eventi, infatti creando un nuovo evento posso decidere di delegare la gestione ad un altro utente (che diventerà manager dell'evento). Questo è possibile farlo tramite il campo "manager" presente nella creazione di un evento (a cui si accede con il bottone apposito indicato precedentemente accanto alla barra di ricerca). 
+
+> __!__ Solo il manager dell'evento può però modificare o eliminare l'evento, pertanto un membro dello staff che decide di delegare la gestione dell'evento ad un altro utente non potrà più modificarlo o eliminarlo se non accedendo direttamente al database.
 
 Nella pagina di creazione di un evento è possibile inserire i seguenti campi: nome, data, descrizione, luogo, manager e un campo per l'immagine dell'evento. 
 
@@ -31,4 +33,4 @@ Nella pagina che mostra i dettagli dell'evento oltre ai campi inseriti nella cre
 La pagina dei luoghi è accessibile tramite il link nella barra di navigazione. In questa pagina è possibile vedere tutti i luoghi in cui si svolgono eventi e cliccando sul nome del luogo è possibile vedere tutti gli eventi che si svolgono in quel luogo. Ancora una volta solo i membri dello staff possono creare nuovi luoghi tramite il bottone apposito (vicino alla barra di ricerca, non visibile per i non staff). In questo caso gli staff sono anche gli unici a poter eliminare o modificare un qualsiasi luogo.
 
 __Disclaimer__: \
-L'applicazione web per la gestione di eventi che stai utilizzando è un prototipo sviluppato a scopo dimostrativo e di test. Gli eventi, i luoghi e i manager degli eventi presenti all'interno dell'applicazione non corrispondono necessariamente a eventi, luoghi o persone reali. Qualsiasi somiglianza con eventi, luoghi o persone esistenti è puramente casuale. Le informazioni visualizzate sono state create esclusivamente per facilitare lo sviluppo e la prototipazione dell'applicazione. L'uso di questo prototipo è destinato esclusivamente a scopi interni e di test. Non si garantisce l'accuratezza, la completezza o l'affidabilità delle informazioni contenute nell'applicazione. Gli utenti sono invitati a non fare affidamento su queste informazioni per qualsiasi scopo reale.
+_L'applicazione web per la gestione di eventi che stai utilizzando è un prototipo sviluppato a scopo dimostrativo e di test. Gli eventi, i luoghi e i manager degli eventi presenti all'interno dell'applicazione non corrispondono necessariamente a eventi, luoghi o persone reali. Qualsiasi somiglianza con eventi, luoghi o persone esistenti è puramente casuale. Le informazioni visualizzate sono state create esclusivamente per facilitare lo sviluppo e la prototipazione dell'applicazione. L'uso di questo prototipo è destinato esclusivamente a scopi interni e di test. Non si garantisce l'accuratezza, la completezza o l'affidabilità delle informazioni contenute nell'applicazione. Gli utenti sono invitati a non fare affidamento su queste informazioni per qualsiasi scopo reale._
